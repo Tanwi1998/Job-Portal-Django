@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Job Website</title>
+   
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+    <header>
+        <div class="menu-bar">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href=""><img src="/media/app/img/jobify.png" alt="" class="image-size"></a>
+          
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-primarys="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                
+                  <div class="choices text-center">
+                {% if not request.session.id %}
+                  <a href="{% url 'adminloginpage' %}">
+                    <span class="choice admin">Admin</span>
+                  </a>
+
+                  <a href="{% url 'signup' %}">
+                    <span class="choice">Signup</span>
+                  </a>
+                  <a href="{% url 'login' %}">
+                    <span class="choice">Login</span>
+                  </a>
+                {% else %}
+                  <a href="{% url 'profile_update' %}">
+                    <span class="choice">Hi, {{request.session.firstname}}</span>
+                  </a>
+                  <a href="{% url 'logout' %}">
+                    <span class="choice">Logout</span>
+                  </a>
+                {% endif %}
+                </div>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                    
+                      <li class="nav-item dropdown">
+        
+                        <a class="nav-link effect dropdown-btn" href="#">Jobs</a>
+                        <div class="dropdown-content">
+                          <a href="#">Fresher Jobs</a>
+                          <a href="#">Remote Jobs</a>
+                          <a href="#">On-site Jobs</a>
+                          <a href="#">Part-time Jobs</a>
+                          <a href="#">Hybrid Jobs</a>
+                          <a href="{% url 'jobs' %}">All Jobs</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link effect dropdown-btn" href="#">Companies</a>
+                        <div class="dropdown-content">
+                          <a href="#">Unicorn</a>
+                          <a href="#">MNCs</a>
+                          <a href="#">Startup</a>
+                          <a href="#">Product-based</a>
+                          <a href="#">Internet</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link effect dropdown-btn" href="#">Services</a>
+                      
+              
+                        
+              
+               
+
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </header>
+
+      <main>
+        <div class="banner text-center">
+          <h1>Find Your Dream Job Now</h1>
+          <p>20 lakh+ jobs for you to explore</p>
+        </div>
+        
+        <div class="search-job text-center">
+          <input type="text" class="form-primary" placeholder="Enter Keyword">
+          <input type="text" class="form-primary" placeholder="Enter Company">
+          <input type="text" class="form-primary" placeholder="Enter Location">
+          <button type="submit">Find Job</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="container text-center">
+          <h3>OUR TOP RECRUITERS</h3>
+            <div class="image-primary">
+              <div class="image1">
+              <img src="/media/app/img/uber.png" alt="" class="img1">
+              <img src="/media/app/img/uber.png/fb.png" alt="" class="img1">
+              <img src="/media/app/img/microsoft.png" alt="" class="img1">
+              <img src="/media/app/img/panasonic.png" alt="" class="img1">
+              </div>
+              <div class="image2">
+                <img src="/media/app/img/at&t.png" alt="" class="img2">
+                <img src="/media/app/img/sony.png" alt="" class="img2">
+                <img src="/media/app/img/asus.png" alt="" class="img2">
+                <img src="/media/app/img/salesforce.png" alt="" class="img2">
+              </div>
+              <div class="image3">
+                <img src="/media/app/img/dell.png" alt="" class="img3">
+                <img src="/media/app/img/google.png" alt="" class="img3">
+                <img src="/media/app/img/ibm.png" alt="" class="img3">
+                <img src="/media/app/img/amazon.png" alt="" class="img3">
+              </div>
+            </div>   
+          </div>
+
+
+
+      <div id="jobs">
+        <div class="container">
+        <h6>CURRENT OPENINGS</h6>
+        <div class="company-details">
+        <div class="job-update">
+          <h4><b>Junior Python Developer</b> <button type="submit" class="btn btn-primary">Apply</button></h4>
+          <p><img src="/media/app/img/dell.png" alt=""> Dell Technologies Pvt Ltd</p>
+          <i class="las la-briefcase"></i> <span>1-3 years</span><br>
+          <i class="las la-rupee-sign"></i> <span>  5-10 LPA</span><br>
+          <i class="las la-map-marker"></i> <span>Bengaluru</span><br>
+          <p>Skills <i class="las la-angle-double-right"></i><small>Python</small><small>Django/Flask</small><small>HTML</small><small>CSS</small><small>Javascript</small>
+            <small>MySQL</small></p>
+          <p>Description <i class="las la-angle-double-right"></i> Experienced with the workflow of Django's backend as well as the frontend design with javascript, possibly ReactJS <a href="#">Read more...</a></p>
+          
+        </div>
+        <div class="color-1">
+        </div>
+        </div>
+        
+        </div>
+        
+      </div>
+
+
+      <div id="jobs">
+        <div class="container">
+        <div class="company-details">
+        <div class="job-update">
+          <h4>Junior Python Developer <button type="submit" class="btn btn-primary">Apply</button></h4>
+          <p><img src="/media/app/img/dell.png" alt=""> Dell Technologies Pvt Ltd</p>
+          <i class="las la-briefcase"></i> <span>1-3 years</span><br>
+          <i class="las la-rupee-sign"></i> <span>  5-10 LPA</span><br>
+          <i class="las la-map-marker"></i> <span>Bengaluru</span><br>
+          <p>Skills <i class="las la-angle-double-right"></i><small>Python</small><small>Django/Flask</small><small>HTML</small><small>CSS</small><small>Javascript</small>
+            <small>MySQL</small></p>
+          <p>Description <i class="las la-angle-double-right"></i> Experienced with the workflow of Django's backend as well as the frontend design with javascript, possibly ReactJS <a href="#">Read more...</a></p>
+        </div>
+        <div class="color-1">
+        </div>
+        </div>
+        </div>
+      </div>
+    
+      <div id="jobs">
+        <div class="container">
+        <div class="company-details">
+        <div class="job-update">
+          <h4>Junior Python Developer <button type="submit" class="btn btn-primary">Apply</button></h4>
+          <p><img src="/media/app/img/dell.png" alt=""> Dell Technologies Pvt Ltd</p>
+          <i class="las la-briefcase"></i> <span>1-3 years</span><br>
+          <i class="las la-rupee-sign"></i> <span>  5-10 LPA</span><br>
+          <i class="las la-map-marker"></i> <span>Bengaluru</span><br>
+          <p>Skills <i class="las la-angle-double-right"></i><small>Python</small><small>Django/Flask</small><small>HTML</small><small>CSS</small><small>Javascript</small>
+            <small>MySQL</small></p>
+          <p>Description <i class="las la-angle-double-right"></i> Experienced with the workflow of Django's backend as well as the frontend design with javascript, possibly ReactJS <a href="#">Read more...</a></p>
+        </div>
+        <div class="color-1">
+        </div>
+        </div>
+        </div>
+      </div>
+      
+      <div id="jobs">
+        <div class="container">
+        <div class="company-details">
+        <div class="job-update">
+          <h4>Junior Python Developer <button type="submit" class="btn btn-primary">Apply</button></h4>
+          <p><img src="/media/app/img/dell.png" alt=""> Dell Technologies Pvt Ltd</p>
+          <i class="las la-briefcase"></i> <span>1-3 years</span><br>
+          <i class="las la-rupee-sign"></i> <span>5-10 LPA</span><br>
+          <i class="las la-map-marker"></i> <span>Bengaluru</span><br>
+          <p>Skills <i class="las la-angle-double-right"></i><small>Python</small><small>Django/Flask</small><small>HTML</small><small>CSS</small><small>Javascript</small>
+            <small>MySQL</small></p>
+          <p>Description <i class="las la-angle-double-right"></i> Experienced with the workflow of Django's backend as well as the frontend design with javascript, possibly ReactJS <a href="#">Read more...</a></p>
+        </div>
+        <div class="color-1">
+        </div>
+        </div>
+        </div>
+      </div>
+  
+      <div id="jobs">
+        <div class="page-no">
+          <a href="#" class="no">1</a>
+          <a href="#" class="no">2</a>
+          <a href="#" class="no">3</a>
+          <span class="material-symbols-outlined">double_arrow</span>
+          
+        </div>
+      </div>
+
+
+      <div class="section">
+        <div class="container">
+          <h3>EXPLORE BY JOB CATEGORIES</h3>
+          <div id="category-1">
+            <div class="topic">
+              <span class="material-symbols-outlined">domain</span><h6>MNCs</h6><p class="hiring">50K+ companies are actively hiring</p>
+            </div>
+            <div class="topic">
+              <span class="material-symbols-outlined">account_balance</span><h6 class="spl-effect">Banking & Finance</h6><p class="hiring">15K+ companies are actively hiring</p>
+            </div>
+            <div class="topic">
+              <span class="material-symbols-outlined">category</span><h6>Product-based</h6><p class="hiring">5K+ companies are actively hiring</p>
+            </div>
+            <div class="topic">
+              <span class="material-symbols-outlined">history_edu</span><h6>Ed-Tech</h6><p class="hiring">300 companies are actively hiring</p>
+            </div>
+          </div>
+
+          <div id="category-2">
+            <div class="topic">
+              <span class="material-symbols-outlined">computer</span><h6>Fin-Tech</h6><p class="hiring">3K+ companies are actively hiring</p>
+            </div>
+            <div class="topic">
+              <span class="material-symbols-outlined">local_shipping</span><h6>Operational</h6><p class="hiring">1K+ companies are  actively hiring</p>
+            </div>
+            <div class="topic">
+              <span class="material-symbols-outlined">spa</span><h6>Hospitality</h6><p class="hiring">100 companies are actively hiring</p>
+            </div>
+            <div class="topic">
+              <span class="material-symbols-outlined">groups</span><h6 class="spl-effect">HR & Management</h6><p class="hiring">30K+ companies are actively hiring</p>
+            </div>
+          </div>
+          <div class="viewall">
+            <span>View All <i class="las la-angle-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+
+          <div class="color-2">
+            <div class="title">
+              <h4>Finding Jobs Got Easier Now. Download Jobify App.</h4>
+              <img src="/media/app/img/google_playstore.png" alt="" class="pic"><img src="/media/app/img/ios_store.png" alt="" class="pic">
+            </div>
+          </div>
+      </main>
+
+
+
+
+          <footer>
+            <div class="options">
+              <div class="candidate">
+                <h4>For Candidate</h4>
+                <p>Job Search</p>
+                <p>Candidate Login</p>
+                <p>Upload Resume</p>
+                <p>Search Tips</p>
+                <p>Career Advices</p>
+                <p>Free Job Alert</p>
+                <p>Find Companies</p>
+              </div>
+              <hr>
+        
+              <div class="rights">
+                <span class="lolo"><i class="las la-copyright"></i> <span>2022 Jobify - All Rights Reserved</span></span>
+                <p>Made with <span class="heart">❤️</span> by Tanwi</p>
+              </div>
+            </div>
+          
+
+           
+
+            <div class="options">
+              <div class="companies">
+                <h4>For Company</h4>
+                <p>Track Applications</p>
+                <p>Company Login</p>
+                <p>Buy Job Postings</p>
+                <p>Advertise With Us</p>
+                <p>Access Your Database</p>
+              </div>
+            </div>
+
+            <div class="options">
+              <div class="jobify">
+                <h4>About Jobify</h4>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+                <p>About Us</p>
+                <p>Contact Us</p>
+                <p>Help Center</p>
+                <p>Report An Issue</p>
+              </div>
+            </div>
+
+            <div class="connect">
+              <h6 style="font-size: 18px;">Connect With Us</h6>
+                <i class="fa fa-facebook" style="color: blue;font-size: 25px;"></i>
+                <i class="fa fa-instagram" style="color:red;font-size: 25px;"></i>
+                <i class="fa fa-twitter" style="color:skyblue;font-size: 25px;"></i>
+                <i class="fa fa-linkedin" style="color:blue;font-size: 25px;"></i>
+            </div>
+          </footer>
+
+
+
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+     
+}
+.image-size {
+    height: 12vh;
+    width: 150%;
+  
+  }
+.nav-link {
+    color: white !important;
+
+
+    
+
+}
+button {
+    background-color: blue;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    color: white;
+    border-radius: 10px !important;
+    border-color:white;
+}
+.admin:hover {
+  background-color: lightgray;
+
+}
+
+.nav-link.effect:hover {
+    color:aqua !important;
+}
+
+.choices {
+  margin-top: 18px;
+  font-size: large;
+  cursor: pointer;
+  margin-left: 30px;
+  display: inline-flex;
+  color: white;
+  
+}
+
+.admin {
+  background-color: black;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 25px;
+ 
+
+}
+
+.choices a {
+  color: white;
+  text-decoration: none;
+}
+
+.choices a:hover {
+  color: blue;
+
+}
+
+.choice {
+  padding-left: 20px;
+
+}
+
+
+
+.navbar-nav {
+    text-align: right;
+    margin-left: 900px;
+}
+
+.move-down {
+  margin-top: 9px;
+}
+
+.dropdown-btn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lavender;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px black;
+    z-index: 1;
+    
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+.dropdown-content a:hover {
+    background-color: white;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.banner {
+    text-align: center;
+    margin-top: -650px;
+    background-size: cover;
+    color: white;
+}
+
+.banner h1 {
+    padding-top: 170px;
+    font-size: 50px;
+    letter-spacing: 6px;
+    font-weight: 600;
+    text-shadow: 0 0 30px rgba(0,0,0,0.5);
+
+}
+
+.search-job {
+    padding: 30px 0;
+    margin: -50px 6% 50px;
+    background-image: linear-gradient(to right,skyblue,lightpink);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 20px !important;
+    margin-top: 330px;
+}
+.form-primary {
+    padding-left: 12px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    border-radius: 100px !important;
+    
+    
+}
+.search-job .form-primary {
+    max-width: 250px;
+    display: inline-flex;
+    margin: 10px 10px;
+    border-radius: 0;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
+.section {
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
+
+.section h3 {
+    text-align: center;
+    padding-bottom: 100px;
+    padding-top: 10px;
+    letter-spacing: 2px;
+    word-spacing: 6px;
+    
+    
+}
+
+h3::before {
+    content: "";
+    background-image: linear-gradient(to right,lightblue, lightpink);
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    z-index: -10;
+    margin-top: -15px;
+    border-top-left-radius: 120px;
+    border-bottom-right-radius: 10px;
+}
+
+.img {
+    margin-left: 250px;
+    padding-top: 50px;
+    justify-content: center !important;
+
+}
+.images-below {
+    padding: 50px;
+
+}
+
+.sub-menu  {
+  background-image: linear-gradient(lightblue,lightpink);
+}
+
+.image-primary {
+    margin-top: -35px;
+    
+}
+
+.image {
+  padding-top: 20px;
+  height: 50vh;
+  width: 50%;
+}
+.image3 {
+    padding-bottom: 40px;
+}
+.img1 {
+    padding: 10px;
+}
+.img2 {
+    padding: 25px;
+}
+.img3 {
+    padding: 30px;
+
+}
+
+
+
+#jobs {
+    background: #f8f8fa;
+    padding-top: -15%;
+    padding-bottom: 30px;
+}
+
+
+h6 {
+    padding-top: 20px;
+    padding-right:25px;
+    padding-bottom: 20px;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    font-weight: 900;
+}
+.company-details {
+    box-shadow: 0 6px 70px 0 lavender;
+    border-radius: 15px;
+    margin-bottom:10px;
+    margin-right: 100px;
+}
+
+small {
+    background-color: lightgrey;
+    padding: 1px 5px;
+    margin: 0 5px;
+}
+
+.job-update {
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+    
+}
+
+
+.btn-primary {
+    color: black;
+    float:right;
+    margin-right:20px ;
+}
+
+.page-no {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    
+}
+.page-no .material-symbols-outlined {
+    padding-top: 7px;
+    cursor: pointer;
+}
+.color-1 {
+    background-image: linear-gradient(white,lightpink,lightblue);
+    width: 100%;
+    height: 3vh;
+    border-radius: 15px;
+}
+.page-no .no {
+    padding: 1px 5px;
+    background: lightgrey;
+    margin: 0 15px;
+    font-size: 20px;
+    color: blueviolet;
+    text-decoration: none;
+}
+
+.topic {
+    box-shadow: 0 5px 15px 0 lightblue;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;  
+}
+
+#category-1 {
+    display: flex;
+    margin: 7%;
+    margin-top: 30px;
+    margin-bottom: -30px;
+ 
+}
+.topic:hover {
+    transform: scale(1.1);
+}
+#category-2 {
+    display: flex;
+    padding-top: 1px;
+    margin: 7%;
+}
+#category-1 .topic {
+    margin-right: 40px;
+    border-radius: 20px;
+    text-align: center;
+ 
+}
+
+#category-2 .topic {
+    margin-right: 40px;
+    border-radius: 20px;
+    text-align: 40px;
+ 
+}
+
+.topic .material-symbols-outlined {
+    margin-right: 30px;
+    margin-top: 20px;
+    background-image: linear-gradient(white,lightpink);
+    border-radius: 20px;
+}
+
+.topic h6 {
+    margin-top: -20px;
+}
+
+.color-2 {
+    background-image: linear-gradient(lightblue,white,lightpink);
+    width: 100%;
+    height: 45vh;
+    margin-top: -30px;
+    text-align: center;
+    justify-content: center;
+ 
+
+
+}
+h5 {
+    padding-top: 40px;
+    word-spacing: 6px;
+    letter-spacing: 6px;
+}
+
+
+.spl-effect {
+    margin-left: 20px;
+}
+
+.hiring {
+    margin-top: -25px;
+    font-size: 13px;
+    justify-content: center;
+    color: grey;
+}
+.title h4 {
+    padding-top: 50px;
+    font-size: 30px;
+    text-align: center;
+}
+.pic {
+    width: 200px;
+    padding-top: 50px;
+    cursor: pointer;
+    padding-left: 7px;
+    padding-right: 7px;
+ 
+}
+
+footer {
+    background-image: linear-gradient(lightcyan,white,lightblue);
+    height: 65vh;
+    margin-top: -16px;
+    display: flex; 
+}
+.options {
+    padding: 6%;
+    cursor: pointer;
+    padding-top: 30px;
+}
+
+.options h4 {
+    padding-bottom: 10px;
+}
+
+.options p:hover {
+    color: blue;
+    text-decoration: underline blue;
+}
+
+hr {
+    width: 100%;
+    margin-top: 60px;
+}
+.options hr {
+    width: 500%;
+    margin-top: 50px;
+}
+
+.jobify {
+    padding-left: 70px;
+}
+
+.connect {
+    padding-top: 15px;
+}
+.connect .fa {
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+
+.viewall {
+    text-align: center;
+    font-size: 20px;
+    background-image: linear-gradient(lightblue,lightpink);
+    width: 18%;
+    border-radius: 30px;
+    margin-left: 500px;
+    padding: 10px 1%;
+    cursor: pointer;
+
+}
+
+.viewall:hover {
+    background-image: linear-gradient(beige,bisque);
+    color: blue;
+    
+
+
+
+
+}
+
+</style>
+
+
+  
+      
+
+
+
+          
+
+
+
+
+    
+  
+
+     
+
+
+
+          
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

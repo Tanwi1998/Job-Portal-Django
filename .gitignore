@@ -1,0 +1,15 @@
+static/
+media/
+Lib/
+Include/
+myvenv/
+Scripts/
+manage.py
+python
+pyvenv
+app/migrations
+app/pycache
+app/_init_.py
+app/apps.py
+app/tests.py
+/db
