@@ -6,10 +6,13 @@ myvenv/
 Scripts/
 manage.py
 python
-pyvenv
+pyvenv.cfg
 app/migrations
-app/__pycache__
 app/_init_.py
 app/apps.py
 app/tests.py
-/db
+/db.sqlite3
+project/
+
+
+
