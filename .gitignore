@@ -8,7 +8,7 @@ manage.py
 python
 pyvenv
 app/migrations
-app/pycache
+app/__pycache__
 app/_init_.py
 app/apps.py
 app/tests.py
